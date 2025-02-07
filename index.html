@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xspense Flow</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fas fa-coins"></i>
+                <h1>Xspense Flow</h1>
+            </div>
+            <nav>
+                <a href="#" id="dashboard-btn"><i class="fas fa-home"></i> Dashboard</a>
+                <a href="#" id="statistics-btn"><i class="fas fa-chart-pie"></i> Statistics</a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header Section -->
+            <header class="header">
+                <div class="currency-selector">
+                    <label>Base Currency:</label>
+                    <select id="baseCurrency">
+                        <option value="USD">USD - US Dollar</option>
+                        <option value="INR">INR - Indian Rupee</option>
+                        <option value="EUR">EUR - Euro</option>
+                        <option value="GBP">GBP - British Pound</option>
+                        <option value="JPY">JPY - Japanese Yen</option>
+                        <option value="AUD">AUD - Australian Dollar</option>
+                        <option value="CAD">CAD - Canadian Dollar</option>
+                    </select>
+                    <button id="updateRates" class="btn-update">
+                        <i class="fas fa-sync-alt"></i> Update Rates
+                    </button>
+                </div>
+            </header>
+
+            <!-- Dashboard Section -->
+                <div class="dashboard-grid">
+                    <div class="card balance-card">
+                        <div class="card-header"><h3>Total Balance</h3><i class="fas fa-dollar-sign"></i></div>
+                        <div class="card-content"><h2 id="totalBalance">0.00</h2><p>Current Month</p></div>
+                    </div>
+                    <div class="card income-card">
+                        <div class="card-header"><h3>Income</h3><i class="fas fa-arrow-up"></i></div>
+                        <div class="card-content"><h2 id="totalIncome">0.00</h2><p>Current Month</p></div>
+                    </div>
+                    <div class="card expense-card">
+                        <div class="card-header"><h3>Expenses</h3><i class="fas fa-arrow-down"></i></div>
+                        <div class="card-content"><h2 id="totalExpenses">0.00</h2><p>Current Month</p></div>
+                    </div>
+                </div>
+            
+            <!-- Statistics Section -->
+            <div id="statistics-section" class="content-section" style="display: none;">
+                <h2>Statistics</h2>
+                <p>Graphs and analytics will be displayed here.</p>
+            </div>
+        
+
+            <!-- Add Transaction Section -->
+            <div class="add-transaction-section">
+                <div class="card transaction-card">
+                    <div class="card-header">
+                        <h3>Add New Transaction</h3>
+                    </div>
+                    <form id="expenseForm" class="transaction-form">
+                        <div class="form-group">
+                            <label>Type</label>
+                            <select id="transactionType" required>
+                                <option value="expense">Expense</option>
+                                <option value="income">Income</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <input type="text" id="description" required placeholder="Enter description">
+                        </div>
+                        <div class="form-group">
+                            <label>Amount</label>
+                            <input type="number" id="amount" required step="0.01" placeholder="Enter amount">
+                        </div>
+                        <div class="form-group">
+                            <label>Category</label>
+                            <select id="category" required>
+                                <option value="food">Food & Dining</option>
+                                <option value="transport">Transportation</option>
+                                <option value="utilities">Utilities</option>
+                                <option value="entertainment">Entertainment</option>
+                                <option value="shopping">Shopping</option>
+                                <option value="health">Healthcare</option>
+                                <option value="travel">Travel</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Date</label>
+                            <input type="date" id="date" required>
+                        </div>
+                        <button type="submit" class="btn-submit">
+                            <i class="fas fa-plus"></i> Add Transaction
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Chart Section -->
+                <div class="card chart-card">
+                    <div class="card-header">
+                        <h3>Expense Analysis</h3>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="expenseChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Transactions -->
+            <div class="card transactions-card">
+                <div class="card-header">
+                    <h3>Recent Transactions</h3>
+                </div>
+                <div id="expenseList" class="transaction-list">
+                    <!-- Transactions will be added here dynamically -->
+                </div>
+            </div>
+             
+            <div class="chatbot-container">
+                <div id="chatbox">
+                    <div id="chat-messages"></div>
+                    <input type="text" id="user-input" placeholder="Ask me anything..." />
+                    <button id="send-btn">Send</button>
+                </div>
+            </div>
+            
+        </main>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <script src="https://unpkg.com/recharts@2.1.16/umd/Recharts.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
