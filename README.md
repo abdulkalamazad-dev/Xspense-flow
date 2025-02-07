@@ -1,5 +1,4 @@
 # Xspense-flow
-# Xspense Flow
 
 ## Overview
 Xspense Flow is a web-based financial tracking application that helps users monitor their expenses and income efficiently. It provides monthly spending analysis, highlights areas where users are spending the most, and offers financial suggestions through an integrated chatbot.
